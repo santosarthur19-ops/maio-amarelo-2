@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maio Amarelo - Atenção pela Vida</title>
+    <!-- Fontes do Google - Ainda externas, mas essenciais para o estilo -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Reset e Variáveis */
+        :root {
+            --primary-color: #FDD835; /* Amarelo principal */
+            --secondary-color: #FBC02D; /* Amarelo escuro */
+            --dark-color: #212121; /* Texto escuro/preto */
+            --light-color: #FAFAFA; /* Fundo claro */
+            --gray-color: #757575; /* Texto secundário */
+            --white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-color);
+            background-color: var(--white);
+        }
+
+        /* Utilitários */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            padding: 80px 0;
+        }
+
+        .bg-light {
+            background-color: var(--light-color);
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .mt-4 {
+            margin-top: 2rem;
+        }
+
+        .img-responsive {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .shadow {
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        /* Cabeçalho */
+        header {
+            background-color: var(--primary-color);
+            color: var(--dark-color);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--dark-color);
+            text-transform: uppercase;
+        }
+
+        .logo p {
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark-color);
+            font-weight: 700;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: var(--white);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(33, 33, 33, 0.8), rgba(33, 33, 33, 0.8)), url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1920' height='1080' viewBox='0 0 1920 1080'%3E%3Crect width='1920' height='1080' fill='%23FDD835'/%3E%3Ctext x='50%25' y='50%25' font-family='Arial, sans-serif' font-size='100' fill='%23212121' text-anchor='middle' dominant-baseline='middle'%3EMaio Amarelo%3C/text%3E%3C/svg%3E") center/cover;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: var(--white);
+        }
+
+        .hero h2 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--dark-color);
+            padding: 12px 30px;
+            text-decoration: none;
+            font-weight: 700;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .btn:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+
+        /* Layout de Conteúdo (Duas Colunas) */
+        .content-row {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .content-row.reverse {
+            flex-direction: row-reverse;
+        }
+
+        .text-content, .image-content {
+            flex: 1;
+        }
+
+        .text-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--dark-color);
+            border-bottom: 4px solid var(--primary-color);
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        .text-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--secondary-color);
+        }
+
+        .text-content p {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        .link-externo {
+            display: inline-block;
+            margin-top: 15px;
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .link-externo:hover {
+            text-decoration: underline;
+        }
+
+        /* Lista de Dicas */
+        .dicas-list {
+            list-style: none;
+        }
+
+        .dicas-list li {
+            margin-bottom: 15px;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        .dicas-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--secondary-color);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        /* Contato */
+        .contato-box {
+            background-color: var(--primary-color);
+            border-radius: 10px;
+            padding: 50px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(253, 216, 53, 0.3);
+        }
+
+        .contato-box h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .contato-box > p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .contato-info {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+        }
+
+        .info-item {
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: 8px;
+            min-width: 250px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .info-item .icon {
+            font-size: 3rem;
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        .info-item h3 {
+            margin-bottom: 10px;
+            color: var(--gray-color);
+        }
+
+        .info-item p {
+            font-size: 1.2rem;
+            color: var(--dark-color);
+        }
+
+        /* Rodapé */
+        footer {
+            background-color: var(--dark-color);
+            color: var(--white);
+            padding: 30px 0;
+            text-align: center;
+        }
+
+        footer .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .footer-links a {
+            color: var(--primary-color);
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: 0.9rem;
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            header .container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 5px 10px;
+            }
+            
+            .hero h2 {
+                font-size: 2.5rem;
+            }
+            
+            .content-row, .content-row.reverse {
+                flex-direction: column;
+            }
+            
+            .contato-info {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>Maio Amarelo</h1>
+                <p>Paz no Trânsito Começa por Você</p>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#sobre">Sobre o Movimento</a></li>
+                    <li><a href="#dicas">Dicas de Segurança</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container hero-content">
+            <h2>No trânsito, escolha a vida!</h2>
+            <p>O Movimento Maio Amarelo nasce com uma só proposta: chamar a atenção da sociedade para o alto índice de mortes e feridos no trânsito em todo o mundo.</p>
+            <a href="#sobre" class="btn">Saiba Mais</a>
+        </div>
+    </section>
+
+    <section id="sobre" class="container section">
+        <div class="content-row">
+            <div class="text-content">
+                <h2>O que é o Maio Amarelo?</h2>
+                <p>É um movimento internacional de conscientização para redução de acidentes de trânsito. O objetivo é colocar em pauta o tema segurança viária e mobilizar toda a sociedade, envolvendo os mais diversos segmentos: órgãos de governos, empresas, entidades de classe, associações, federações e sociedade civil organizada.</p>
+                <p>A cor amarela foi escolhida por ser a cor da advertência no trânsito. Placas amarelas alertam ao motorista sobre possíveis problemas à frente. A cor amarela do semáforo também traduz-se em atenção. Portanto, o amarelo é o sinal de alerta no trânsito de todo o mundo.</p>
+                <a href="https://maioamarelo.com/" target="_blank" class="link-externo">Visite o site oficial do movimento &rarr;</a>
+            </div>
+            <div class="image-content">
+                <!-- SVG do laço amarelo embutido diretamente -->
+                <svg width="150" height="150" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2ZM12 4C16.4183 4 20 7.58172 20 12C20 16.4183 16.4183 20 12 20C7.58172 20 4 16.4183 4 12C4 7.58172 7.58172 4 12 4ZM12 6C9.79086 6 8 7.79086 8 10C8 12.2091 9.79086 14 12 14C14.2091 14 16 12.2091 16 10C16 7.79086 14.2091 6 12 6ZM12 8C13.1046 8 14 8.89543 14 10C14 11.1046 13.1046 12 12 12C10.8954 12 10 11.1046 10 10C10 8.89543 10.8954 8 12 8ZM12 16C9.79086 16 8 17.7909 8 20H16C16 17.7909 14.2091 16 12 16Z" fill="#FDD835"/>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <section id="dicas" class="bg-light section">
+        <div class="container">
+            <h2 class="text-center">Dicas para um Trânsito mais Seguro</h2>
+            
+            <div class="content-row reverse">
+                <div class="text-content">
+                    <h3>Para Motoristas</h3>
+                    <ul class="dicas-list">
+                        <li><strong>Respeite os limites de velocidade:</strong> A velocidade inadequada é uma das maiores causas de acidentes graves.</li>
+                        <li><strong>Não use o celular:</strong> Digitar ou falar ao celular tira a atenção e aumenta em até 400% a chance de acidentes.</li>
+                        <li><strong>Se beber, não dirija:</strong> Álcool e direção é uma mistura fatal. Escolha o táxi, aplicativo ou o motorista da rodada.</li>
+                        <li><strong>Use o cinto de segurança:</strong> Ele salva vidas e deve ser usado inclusive no banco de trás.</li>
+                    </ul>
+                    
+                    <h3 class="mt-4">Para Pedestres</h3>
+                    <ul class="dicas-list">
+                        <li><strong>Atravesse na faixa:</strong> A faixa de pedestre é o local mais seguro para a travessia.</li>
+                        <li><strong>Olhe para os dois lados:</strong> Mesmo em ruas de mão única, certifique-se de que é seguro atravessar.</li>
+                        <li><strong>Faça contato visual:</strong> Certifique-se de que o motorista viu você antes de iniciar a travessia.</li>
+                    </ul>
+                </div>
+                <div class="image-content">
+                    <!-- Imagem de conscientização em Base64 -->
+                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MDAiIGhlaWdodD0iNDAwIiB2aWV3Qm94PSIwIDAgNjAwIDQwMCI+PHJlY3Qgd2lkdGg9IjYwMCIgaGVpZ2h0PSI0MDAiIGZpbGw9IiNGRkQ4MzUiLz48dGV4dCB4PSIzMDAiIHk9IjIwMCIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjUwIiBmaWxsPSIjMjEyMTIxIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkb21pbmFudC1iYXNlbGluZT0ibWlkZGxlIj5Qcm90ZWphIGEgVmlkYTwvdGV4dD48L3N2Zz4=" alt="Campanha Maio Amarelo - Proteja a Vida" class="img-responsive shadow">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contato" class="container section">
+        <div class="contato-box">
+            <h2>Participe da Campanha</h2>
+            <p>Quer levar o Maio Amarelo para sua empresa, escola ou comunidade? Entre em contato conosco para receber materiais e orientações.</p>
+            
+            <div class="contato-info">
+                <div class="info-item">
+                    <span class="icon">📞</span>
+                    <h3>Telefone / WhatsApp</h3>
+                    <p><strong>(11) 98765-4321</strong></p>
+                </div>
+                <div class="info-item">
+                    <span class="icon">✉️</span>
+                    <h3>E-mail</h3>
+                    <p>contato@maioamarelo.org.br</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 - Site Educativo sobre o Maio Amarelo. Juntos salvamos vidas.</p>
+            <div class="footer-links">
+                <a href="https://www.gov.br/transportes/pt-br/senatran" target="_blank">SENATRAN</a>
+                <a href="https://www.onsv.org.br/" target="_blank">Observatório Nacional de Segurança Viária</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
